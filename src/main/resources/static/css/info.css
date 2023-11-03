@@ -1,0 +1,13 @@
+.content{
+  margin:auto;
+  margin-top: 5rem;
+}
+
+.title{
+  display: inline;
+}
+
+
+#session-on{
+  display: none;
+}

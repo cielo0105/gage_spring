@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.dao.BoardDao">
+
+	<select id="listArticle" parameterType="Map"
+		resultMap="basicBoard">
+		select * from board
+		<choose>
+			<when test='key=="subject"'>
+				where subject like concat('%', #{word}, '%' )
+			</when>
+			<otherwise>
+				where #{key} = #{word}
+			</otherwise>
+		</choose>
+		order by #{articleNo} desc
+		limit #{start}, #{listsize}
+	</select>
+	
+	<select id="getTotalArticleCount" parameterType="Map">
+		select count(article_no) from board
+		<choose>
+			<when test='key=="subject"'>
+				where subject like concat('%', #{word}, '%' )
+			</when>
+			<otherwise>
+				where #{key} = #{word}
+			</otherwise>
+		</choose>
+	</select>
+
+	<resultMap id="basicBoard" type="boardDto">
+		<result column="article_no" property="articleNo" />
+		<result column="user_id" property="userId" />
+		<result column="subject" property="subject" />
+		<result column="content" property="content" />
+		<result column="hit" property="hit" />
+		<result column="register_time" property="registerTime" />
+	</resultMap>
+</mapper>

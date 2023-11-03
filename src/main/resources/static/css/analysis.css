@@ -1,0 +1,21 @@
+.content {
+  margin: auto;
+  margin-top: 5rem;
+}
+
+.my-card1{
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: auto 100px;
+}
+
+.my-card2{
+    border-radius: 10px;
+    padding: auto 100px;
+    border: 1px solid whitesmoke;
+	
+}
+
+.empty-data{
+	
+}
