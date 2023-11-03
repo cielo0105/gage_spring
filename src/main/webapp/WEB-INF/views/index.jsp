@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/common/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 <div id="information" class="information scroll">
 	<div class="brt-6 p-2 gray-700">
@@ -81,12 +81,12 @@
 </article>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6aa08865bc20d80f0d5bfb3661b2e72b&libraries=services"></script>
-<%@ include file="./js/history.jsp"%>
+<%@ include file="/WEB-INF/views/js/history.jsp"%>
 
 
-<script src="./js/utils.js"></script>
-<script src="./js/kakao.js"></script>
-<script src="./js/infomation.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/kakao.js"></script>
+<script src="/js/infomation.js"></script>
 
 
 </body>
