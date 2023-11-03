@@ -73,7 +73,7 @@
 					<li class="nav-item"><a class="nav-link"
 						href="${root }/about.jsp">소개</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="${root }/board?action=list&pgno=1&key=&workd=">공지사항</a></li>
+						href="${root }/board?pgno=1&key=&word=">공지사항</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="${root }/analysis.jsp">분석</a></li>
 				</ul>

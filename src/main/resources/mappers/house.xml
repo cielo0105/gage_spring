@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.dao.HouseDao">
+
+	<select id="searchByDongCode" parameterType="Long" resultMap="basicHouseInfo">
+		SELECT *, (select dealAmount
+		from housedeal d
+		where aptCode = i.aptCode
+		order by dealYear DESC, dealMonth DESC, dealDay DESC limit 1)
+		as dealAmount
+		FROM houseinfo i
+		WHERE i.dongCode LIKE #{code}
+	</select>
+
+	<resultMap type="houseInfoDto" id="basicHouseInfo">
+		<result column="aptCode" property="aptCode" />
+		<result column="buildYear" property="buildYear" />
+		<result column="roadName" property="roadName" />
+		<result column="roadNameBonbun" property="roadNameBonbun" />
+		<result column="roadNameBubun" property="roadNameBubun" />
+		<result column="roadNameSeq" property="roadNameSeq" />
+		<result column="roadNameBasementCode"
+			property="roadNameBasementCode" />
+		<result column="roadNameCode" property="roadNameCode" />
+		<result column="dong" property="dong" />
+		<result column="bonbun" property="bonbun" />
+		<result column="bubun" property="bubun" />
+		<result column="sigunguCode" property="sigunguCode" />
+		<result column="eubmyundongCode" property="eubmyundongCode" />
+		<result column="dongCode" property="dongCode" />
+		<result column="landCode" property="landCode" />
+		<result column="apartmentName" property="apartmentName" />
+		<result column="jibun" property="jibun" />
+		<result column="lng" property="lng" />
+		<result column="lat" property="lat" />
+	</resultMap>
+</mapper>

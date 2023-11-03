@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.dao.MemberDao">
+
+    <insert id="registerMember" parameterType="memberDto">
+        insert into member (user_id, user_name, user_pass)
+        values (#{userId},#{user_name},#{user_pass})
+    </insert>
+    
+    <select id="getInfo" parameterType="string" resultMap="basicMember">
+        select * from member
+        where user_id = #{userId}
+    </select>
+    
+     <select id="login" parameterType="string" resultMap="basicMember">
+        select * from member
+        where user_id = #{userId} and user_pass = #{userPass}
+    </select>
+
+    <update id="modifyMember" parameterType="memberDto">
+        update member
+        set user_name = #{userName}, user_pass = #{userPass}
+        where user_id = #{userId}
+    </update>
+    
+    <delete id="deleteMember" parameterType="string">
+        delete from members
+        where user_id = #{userId}
+    </delete>
+    
+    <resultMap id="basicMember" type="memberDto">
+        <result column="user_id" property="userId" />
+        <result column="user_name" property="userName" />
+        <result column="user_pass" property="userPass" />
+        <result column="join_date" property="joinDate" />
+    </resultMap>
+</mapper>

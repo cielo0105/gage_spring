@@ -8,10 +8,11 @@
 	async function getApt(code) {
 		let infoList = [];
 		
-		await fetch("${root}/house?action=aptinfo&code="+code)
+		await fetch("${root}/house/aptinfo?code="+code)
 			.then(response => response.json())
 			.then(async (data) => {
-				infoList = data.infoList;
+				console.log(data);
+				infoList = data.data;
 
 				for(let i = 0; i < infoList.length; i++){					
 					createMarker(infoList[i]);
