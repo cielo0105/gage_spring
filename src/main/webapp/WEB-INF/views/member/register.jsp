@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/common/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 <div class="container row content align-items-center w-50">
 	<div class="mb-3">
 		<h1 class="fw-bold border-bottom pb-3">회원가입</h1>
@@ -45,7 +45,7 @@
 		<button type="button" class="btn btn-secondary btn-lg py-2 px-5" id="btn-register">회원가입</button>
 	</div>
 </div>
-<%@ include file="/js/register.jsp"%>
+<%@ include file="/WEB-INF/views/js/register.jsp"%>
 </body>
 <link rel="stylesheet" href="${root }/css/register.css" type="text/css" />
 </html>

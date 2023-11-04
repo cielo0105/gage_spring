@@ -3,6 +3,8 @@ package com.ssafy.happyhouse.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,14 +31,24 @@ public class MemberController {
     private final MemberService service;
     
     @PostMapping("/regist")
-    public ResponseEntity<Map<String, Object>> regist(@RequestBody MemberDto memberDto) {
+    public ResponseEntity<Map<String, Object>> regist(MemberDto memberDto) {
         service.registerMember(memberDto);
         return handleSuccess(memberDto);
     }
     
     @PostMapping("/login")
-    public ResponseEntity<Map<String, Object>> login(@RequestParam String userId, @RequestParam String userPass) {
-        return handleSuccess(service.login(userId, userPass));
+    public ResponseEntity<Map<String, Object>> login(@RequestParam String userId, @RequestParam String userPass, HttpSession session) {
+        MemberDto result = service.login(userId, userPass);
+        if(result != null) {
+        	session.setAttribute("user", result);
+        }
+    	return handleSuccess(service.login(userId, userPass));
+    }
+    
+    @PostMapping("/logout")
+    public ResponseEntity<Map<String, Object>> logout(HttpSession session) {
+        session.invalidate();
+        return handleSuccess("로그아웃 성공");
     }
     
     @GetMapping("/info/{userId}")

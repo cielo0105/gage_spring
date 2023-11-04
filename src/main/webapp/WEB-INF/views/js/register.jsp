@@ -25,9 +25,9 @@ document.querySelector("#btn-register").addEventListener("click", async function
         const saltRounds = 10; // Number of salt rounds
         const userpwd = bcrypt.hash(srcpwd, saltRounds); */
         
-        const response = await fetch("${root}/member?action=regist", {
+        const response = await fetch("${root}/member/regist", {
       	  method: "post",
-      	  body:"userid="+userid+"&userpwd="+userpwd+"&username="+username,
+      	  body:"userId="+userid+"&userPass="+userpwd+"&userName="+username,
       	  headers: {
       		  'Content-Type': 'application/x-www-form-urlencoded'
       	  }
@@ -35,10 +35,10 @@ document.querySelector("#btn-register").addEventListener("click", async function
         
         const json = await response.json();
         console.log(json);
-        if(!json.result){
-      	  alert(json.msg);
+        if(!json.success){
+      	  alert("실패했습니다.");
         }else{ 
-      	  location.href="${root}/index.jsp";
+      	  location.href="/";
         }
       }
 });

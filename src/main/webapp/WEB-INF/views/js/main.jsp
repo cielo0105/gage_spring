@@ -16,9 +16,9 @@ document.querySelector("#btn-login").addEventListener("click", async function ()
         const saltRounds = 10; // Number of salt rounds
         const userpwd = await bcrypt.hash(srcpwd, saltRounds); */
         
-        const response = await fetch("${root}/member?action=login", {
+        const response = await fetch("/member/login", {
       	  method: "post",
-      	  body:"userid="+userid+"&userpwd="+userpwd,
+      	  body:"userId="+userid+"&userPass="+userpwd,
       	  headers: {
       		  'Content-Type': 'application/x-www-form-urlencoded'
       	  }
@@ -26,19 +26,19 @@ document.querySelector("#btn-login").addEventListener("click", async function ()
         
         const json = await response.json();
         console.log(json);
-        if(!json.result){
-      	  alert(json.msg);
+        if(!json.success){
+      	  alert("로그인에 실패했습니다. 다시 시도해주세요.");
         }else{ 
-      	  location.href="${root}/index.jsp";
+      	  location.href="/";
         }
       }
 });
 
 document.querySelector("#btn-logout").addEventListener("click", async function () {
-	const response = await fetch("${root}/member?action=logout", {
+	const response = await fetch("/member/logout", {
     	  method: "post",
       })
-   	location.href="${root}/index.jsp";
+   	location.href="/";
 });
 
 

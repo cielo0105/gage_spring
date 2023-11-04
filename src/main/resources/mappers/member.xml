@@ -6,7 +6,7 @@
 
     <insert id="registerMember" parameterType="memberDto">
         insert into member (user_id, user_name, user_pass)
-        values (#{userId},#{user_name},#{user_pass})
+        values (#{userId},#{userName},#{userPass})
     </insert>
     
     <select id="getInfo" parameterType="string" resultMap="basicMember">

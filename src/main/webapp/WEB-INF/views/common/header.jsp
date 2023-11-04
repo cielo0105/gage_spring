@@ -60,7 +60,7 @@
 	<header class="navbar text-white bg-dark navbar-expand-lg"
 		data-bs-theme="dark">
 		<div class="container">
-			<a class="navbar-brand title" href="${root }/index.jsp">구해줘 홈즈</a>
+			<a class="navbar-brand title" href="/">구해줘 홈즈</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false"
@@ -84,8 +84,8 @@
 								data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</button>
 						</li>
 						<li class="nav-item">
-							<button class="btn ms-1 soft enabled btn-secondary"
-								onclick="location.href='${root}/member/register.jsp'">회원가입</button>
+							<a class="btn ms-1 soft enabled btn-secondary"
+								href="/regist">회원가입</a>
 						</li>
 					</ul>
 				</c:if>
