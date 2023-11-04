@@ -43,7 +43,7 @@
 						data-bs-dismiss="modal" id="btn-login">로그인</button>
 
 					<div class="mt-3 text-center">
-						<a href="./findpw1.html"
+						<a href="/findpw1"
 							class="text-secondary text-decoration-none">비밀번호 찾기</a>
 					</div>
 

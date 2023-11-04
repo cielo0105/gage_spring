@@ -26,4 +26,14 @@ public class ViewController {
 	public String analysis() {
 		return "analysis";
 	}
+	
+	@GetMapping("/findpw1")
+	public String findpw1() {
+		return "member/findpw1";
+	}
+	
+	@GetMapping("/info")
+	public String info() {
+		return "member/info";
+	}
 }

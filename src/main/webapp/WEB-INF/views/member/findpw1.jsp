@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/common/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 <div class="container row content align-items-center">
 	<div class="mb-3">
@@ -8,7 +8,7 @@
 
 	<div class="row text-end fs-6 fw-light">
 		<p>
-			<b class="fw-bold">01. 아이디 입력</b> > 02. 본인 확인 > 03. 비밀번호 재설정
+			<b class="fw-bold">01. 아이디 입력</b>> 02. 비밀번호 재설정
 		</p>
 	</div>
 
