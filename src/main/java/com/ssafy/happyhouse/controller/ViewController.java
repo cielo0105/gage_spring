@@ -32,6 +32,11 @@ public class ViewController {
 		return "member/findpw1";
 	}
 	
+	@GetMapping("/findpw3")
+	public String findpw3() {
+		return "member/findpw3";
+	}
+	
 	@GetMapping("/info")
 	public String info() {
 		return "member/info";

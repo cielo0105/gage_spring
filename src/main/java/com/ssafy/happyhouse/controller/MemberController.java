@@ -51,6 +51,21 @@ public class MemberController {
         return handleSuccess("로그아웃 성공");
     }
     
+    @PostMapping("/findpw1")
+    public ResponseEntity<Map<String, Object>> findpw1(@RequestParam String userId, HttpSession session) {
+        MemberDto result = service.getInfo(userId);
+        session.setAttribute("findid", result);
+    	return handleSuccess(result);
+    }
+    
+    @PostMapping("/findpw3")
+    public ResponseEntity<Map<String, Object>> findpw3(@RequestParam String userPass, HttpSession session) {
+        MemberDto user = (MemberDto) session.getAttribute("findid");
+        user.setUserPass(userPass);
+        service.modifyMember(user);
+    	return handleSuccess("비밀번호 변경 성공");
+    }
+    
     @GetMapping("/info/{userId}")
     public ResponseEntity<Map<String, Object>> info(@PathVariable String userId) {
         return handleSuccess(service.getInfo(userId));
