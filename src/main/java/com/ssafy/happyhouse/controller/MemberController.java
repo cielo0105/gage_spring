@@ -56,15 +56,21 @@ public class MemberController {
         return handleSuccess(service.getInfo(userId));
     }
     
+    
+    
     @PutMapping("/edit")
-    public ResponseEntity<Map<String, Object>> modify(@RequestBody MemberDto memberDto) {
+    public ResponseEntity<Map<String, Object>> modify(@RequestBody MemberDto memberDto, HttpSession session) {
+    	
+    	System.out.println("00000000000000000000000000000000"+memberDto.getUserName());
         service.modifyMember(memberDto);
+        session.setAttribute("user", memberDto);
         return handleSuccess(memberDto);
     }
     
     @DeleteMapping("/{userId}")
-    public ResponseEntity<Map<String, Object>> delete(@PathVariable String userId) {
+    public ResponseEntity<Map<String, Object>> delete(@PathVariable String userId, HttpSession session) {
         service.deleteMember(userId);
+        session.invalidate();
         return handleSuccess(userId);
     }
     

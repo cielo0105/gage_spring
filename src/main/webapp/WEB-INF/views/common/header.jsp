@@ -96,7 +96,7 @@
 						</li>
 						<li class="nav-item">
 							<button class="btn ms-1 btn-secondary"
-								onclick="location.href='${root }/member/info.jsp'">마이페이지</button>
+								onclick="location.href='/info'">마이페이지</button>
 						</li>
 					</ul>
 				</c:if>

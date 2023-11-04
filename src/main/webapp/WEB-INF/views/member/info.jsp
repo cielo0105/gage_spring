@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/common/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 <div class="container row content align-items-center w-50">
 	<div class="mb-3">
@@ -41,7 +41,7 @@
 		<button type="button" class="btn btn-secondary btn-lg py-2 px-5" id="btn-update">정보수정</button>
 	</div>
 </div>
-<%@ include file="/js/info.jsp"%>
+<%@ include file="/WEB-INF/views/js/info.jsp"%>
 </body>
 <link rel="stylesheet" href="${root }/css/info.css" type="text/css" />
 </html>

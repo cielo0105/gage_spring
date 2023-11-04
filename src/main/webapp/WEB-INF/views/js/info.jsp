@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <c:set value="${pageContext.servletContext.contextPath }" var="root"></c:set>
 <script>
 document.querySelector("#btn-update").addEventListener("click", async function () {
@@ -21,21 +21,26 @@ document.querySelector("#btn-update").addEventListener("click", async function (
         const userpwd = document.querySelector("#password").value;
         const username = document.querySelector("#name").value;
         
-        const response = await fetch("${root}/member?action=update", {
-      	  method: "post",
-      	  body:"userid="+userid+"&userpwd="+userpwd+"&username="+username,
+        const data = {
+        	    userId: userid,
+        	    userPass: userpwd,
+        	    userName: username
+        };
+        
+        const response = await fetch("member/edit", {
+      	  method: "put",
+      	  //body:"userId="+userid+"&userPass="+userpwd+"&userName="+username,
+      	  body: JSON.stringify(data),
       	  headers: {
-      		  'Content-Type': 'application/x-www-form-urlencoded'
+      		  'Content-Type': 'application/json'
       	  }
         })
         
         const json = await response.json();
         console.log(json);
-        if(!json.result){
-      	  alert(json.msg);
-        }else{ 
-      	  location.href="${root}/member/info.jsp";
-        }
+        
+      	 location.href="/info";
+        
       }
 });
 
@@ -56,21 +61,20 @@ document.querySelector("#btn-delete").addEventListener("click", async function (
     	  
         const userid = document.querySelector("#id").value;
         
-        const response = await fetch("${root}/member?action=delete", {
-      	  method: "post",
-      	  body:"userid="+userid,
+        const response = await fetch("/member/"+userid, {
+      	  method: "delete",
+      	 // body:"userid="+userid,
       	  headers: {
-      		  'Content-Type': 'application/x-www-form-urlencoded'
+      		 // 'Content-Type': 'application/x-www-form-urlencoded'
+      		  'Content-Type': 'application/json'
       	  }
         })
         
         const json = await response.json();
         console.log(json);
-        if(!json.result){
-      	  alert(json.msg);
-        }else{ 
-      	  location.href="${root}/index.jsp";
-        }
+        
+      	  location.href="/";
+        
       }
 });
 </script>
