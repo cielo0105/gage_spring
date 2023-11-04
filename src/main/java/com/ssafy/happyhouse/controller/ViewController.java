@@ -16,4 +16,14 @@ public class ViewController {
 	public String regist() {
 		return "member/register";
 	}
+	
+	@GetMapping("/about")
+	public String about() {
+		return "about";
+	}
+	
+	@GetMapping("/analysis")
+	public String analysis() {
+		return "analysis";
+	}
 }

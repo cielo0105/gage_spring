@@ -12,7 +12,7 @@ let curLon = 0;
 let starLoc = new Map();
 
 // 아파트를 클릭했을때
-function infoPrint(lat, lon,code) {
+function infoPrint(lat, lon, code) {
   curLat = lat;
   curLon = lon;
 
@@ -41,10 +41,10 @@ function infoPrint(lat, lon,code) {
       // 최근 거래가 초기화
       document.getElementById("curCost").innerHTML = "";
 
-      fetch("/TP_S10_S09_DB_HappyHouse/house?action=dealinfo&aptNo="+code)
+      fetch("/house/dealinfo?aptNo="+code)
 		.then(response => response.json())
 		.then((data) => {
-			let infoList = data.infoList;
+			let infoList = data.data;
 			let table = document.getElementById("table-history");
 			
 			for(let i = 0; i < infoList.length; i++){

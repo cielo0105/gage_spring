@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/common/header.jsp"%>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 <div class="bg-dark bg-gradient">
 	<div class="container py-5 px-4 mb-5">

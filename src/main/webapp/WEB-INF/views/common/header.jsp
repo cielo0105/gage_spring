@@ -71,11 +71,11 @@
 				<!-- ㅣ기본정보 -->
 				<ul class="navbar-nav me-auto">
 					<li class="nav-item"><a class="nav-link"
-						href="${root }/about.jsp">소개</a></li>
+						href="/about">소개</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="${root }/board?pgno=1&key=&word=">공지사항</a></li>
+						href="/board?pgno=1&key=&word=">공지사항</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="${root }/analysis.jsp">분석</a></li>
+						href="/analysis">분석</a></li>
 				</ul>
 				<c:if test="${empty user }">
 					<ul class="navbar-nav ms-auto">
