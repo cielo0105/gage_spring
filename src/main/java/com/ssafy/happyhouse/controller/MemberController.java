@@ -1,4 +1,5 @@
 package com.ssafy.happyhouse.controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +25,7 @@ import com.ssafy.happyhouse.model.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+@CrossOrigin(origins = { "*" }, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.POST} , maxAge = 6000)
 @RestController
 @RequestMapping("/member")
 @RequiredArgsConstructor
@@ -31,18 +34,27 @@ public class MemberController {
     private final MemberService service;
     
     @PostMapping("/regist")
-    public ResponseEntity<Map<String, Object>> regist(MemberDto memberDto) {
+    public ResponseEntity<Map<String, Object>> regist(@RequestBody Map<String, String> userData) {
+    	MemberDto memberDto = new MemberDto();
+    	System.out.println(userData);
+    	memberDto.setUserId(userData.get("userId"));
+    	memberDto.setUserPass(userData.get("userPass"));
+    	memberDto.setUserName(userData.get("userName"));
         service.registerMember(memberDto);
         return handleSuccess(memberDto);
     }
     
     @PostMapping("/login")
-    public ResponseEntity<Map<String, Object>> login(@RequestParam String userId, @RequestParam String userPass, HttpSession session) {
-        MemberDto result = service.login(userId, userPass);
+    public ResponseEntity<Map<String, Object>> login(@RequestBody Map<String, String> userData, HttpSession session) {
+        String userId = userData.get("userId");
+        String userPass = userData.get("userPass");
+    	MemberDto result = service.login(userId, userPass);
+    	System.out.println(userData);
         if(result != null) {
         	session.setAttribute("user", result);
+        	return handleSuccess(result);
         }
-    	return handleSuccess(service.login(userId, userPass));
+        else return handleFailure();
     }
     
     @PostMapping("/logout")
@@ -96,4 +108,9 @@ public class MemberController {
         return new ResponseEntity<Map<String, Object>>(result, HttpStatus.OK);
     }
     
+    private ResponseEntity<Map<String, Object>> handleFailure() {
+        Map<String, Object> result = new HashMap<>();
+        result.put("success", false);
+        return new ResponseEntity<Map<String, Object>>(result, HttpStatus.UNAUTHORIZED);
+    }
 }
