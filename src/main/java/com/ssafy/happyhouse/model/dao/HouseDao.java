@@ -16,7 +16,7 @@ public interface HouseDao {
 
 	List<HouseInfoDto> searchByDongCode(long dongCode);
 
-	List<HouseDealDto> searchByAptNo(long aptNo);
+	List<HouseInfoDto> searchByAptNo(long aptNo);
 	
 	List<GuInfoDto> getGuInfoList(long code);
 	List<MonthlyGuInfoDto> getMonthlyGuInfoList(long code);

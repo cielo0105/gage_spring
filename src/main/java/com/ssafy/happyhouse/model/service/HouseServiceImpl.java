@@ -26,7 +26,7 @@ public class HouseServiceImpl implements HouseService{
 	}
 
 	@Override
-	public List<HouseDealDto> searchByAptNo(long aptNo) {
+	public List<HouseInfoDto> searchByAptNo(long aptNo) {
 		return dao.searchByAptNo(aptNo);
 	}
 

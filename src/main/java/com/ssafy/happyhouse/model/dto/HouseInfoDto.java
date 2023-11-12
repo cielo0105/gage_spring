@@ -1,6 +1,6 @@
 package com.ssafy.happyhouse.model.dto;
 
-import java.sql.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,4 +32,6 @@ public class HouseInfoDto{
 	private String lng;
 	private String lat;
 	private String dealAmount;
+	
+	private List<HouseDealDto> houseDealDto;
 }

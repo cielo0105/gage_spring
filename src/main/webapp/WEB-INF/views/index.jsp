@@ -168,9 +168,9 @@ const changeMoney = (value) => {
 	  content.setAttribute('onclick', 'showDetail(this)');
 
 	  content.innerHTML = `
-	        <input type="hidden" name="clickLat" value=${data.lat}>
-	        <input type="hidden" name="clickLng" value=${data.lng}>
-	        <input type="hidden" name="clickCode" value=${data.aptCode}>
+	        <input type="hidden" name="clickLat" value=\${data.lat}>
+	        <input type="hidden" name="clickLng" value=\${data.lng}>
+	        <input type="hidden" name="clickCode" value=\${data.aptCode}>
 	        <div class="price">\${changeMoney(data.dealAmount)}</div>
 	        <div class="date">\${data.buildYear}</div>`;
 
@@ -192,9 +192,10 @@ const changeMoney = (value) => {
 	// 오버레이 클릭 했을 때 왼쪽 박스에 디테일 보여주는 함수
 	async function showDetail(e) {
 	  let lat = e.children[0].value;
-
 	  let lng = e.children[1].value;
 	  let code = e.children[2].value;
+	  console.log(e.children[0]);
+	  console.log(lat, lng, code);
 	  await infoPrint(lat, lng, code);
 	}
 
@@ -221,6 +222,8 @@ const changeMoney = (value) => {
 	function infoPrint(lat, lon, code) {
 	  curLat = lat;
 	  curLon = lon;
+	  
+	  console.log(lat, lon, code);
 
 	  searchDetailAddrFromCoords(lat, lon, function (result, status) {
 	    if (status === kakao.maps.services.Status.OK) {

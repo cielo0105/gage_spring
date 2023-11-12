@@ -13,6 +13,7 @@ let starLoc = new Map();
 
 // 아파트를 클릭했을때
 function infoPrint(lat, lon, code) {
+	console.log(lat, lon, code);
   curLat = lat;
   curLon = lon;
 

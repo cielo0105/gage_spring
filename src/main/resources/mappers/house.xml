@@ -13,6 +13,14 @@
 		FROM houseinfo i
 		WHERE i.dongCode LIKE #{code}
 	</select>
+	
+	<select id="searchByAptNo" parameterType="Long" resultMap="houseInfoDto">
+SELECT d.*, i.*
+FROM houseinfo i join housedeal d on d.aptCode=i.aptCode
+WHERE d.aptCode = #{code}
+ORDER BY dealYear DESC, dealMonth DESC,dealDay DESC
+LIMIT 100
+	</select>
 
 	<resultMap type="houseInfoDto" id="basicHouseInfo">
 		<result column="aptCode" property="aptCode" />
@@ -36,4 +44,21 @@
 		<result column="lng" property="lng" />
 		<result column="lat" property="lat" />
 	</resultMap>
+	
+	<resultMap type="houseDealDto" id="basicHouseDealDto">
+		<result column="no" property="no" />
+		<result column="dealAmount" property="dealAmount" />
+		<result column="dealYear" property="dealYear" />
+		<result column="dealMonth" property="dealMonth" />
+		<result column="dealDay" property="dealDay" />
+		<result column="area" property="area" />
+		<result column="floor" property="floor" />
+		<result column="cancelDealType" property="cancelDealType" />
+		<result column="aptCode" property="aptCode" />
+	</resultMap>
+	
+	<resultMap type="HouseInfoDto" id="houseInfoDto" extends="basicHouseInfo">
+    <collection property="houseDealDto" ofType="HouseDealDto"
+                 resultMap="basicHouseDealDto"></collection>
+</resultMap>
 </mapper>

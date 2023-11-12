@@ -11,7 +11,7 @@ import com.ssafy.happyhouse.model.dto.MonthlyGuInfoDto;
 public interface HouseService {
 	List<HouseInfoDto> searchByDongCode(long dongCode);
 
-	List<HouseDealDto> searchByAptNo(long aptNo);
+	List<HouseInfoDto> searchByAptNo(long aptNo);
 
 	DongCodeDto dongCode(DongCodeDto dongCode);
 
