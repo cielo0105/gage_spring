@@ -73,7 +73,7 @@
 					<li class="nav-item"><a class="nav-link"
 						href="/about">소개</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="/board?pgno=1&key=&word=">공지사항</a></li>
+						href="/board/list?pgno=1&key=&word=">공지사항</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="/analysis">분석</a></li>
 				</ul>

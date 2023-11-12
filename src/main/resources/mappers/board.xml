@@ -3,6 +3,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ssafy.happyhouse.model.dao.BoardDao">
+	<insert id="registerArticle" parameterType="boardDto">
+        insert into board (user_id, subject, content)
+        values (#{userId},#{subject},#{content})
+    </insert>
 
 	<select id="listArticle" parameterType="Map"
 		resultMap="basicBoard">
@@ -30,6 +34,17 @@
 			</otherwise>
 		</choose>
 	</select>
+
+	<update id="modifyArticle" parameterType="boardDto">
+        update board
+        set subject = #{subject}, content = #{content}
+        where article_no = #{articleNo}
+    </update>
+    
+    <delete id="deleteArticle" parameterType="int">
+        delete from board
+        where article_no = #{articleNo}
+    </delete>
 
 	<resultMap id="basicBoard" type="boardDto">
 		<result column="article_no" property="articleNo" />
