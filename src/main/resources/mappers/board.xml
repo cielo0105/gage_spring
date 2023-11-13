@@ -19,7 +19,7 @@
 				where #{key} = #{word}
 			</otherwise>
 		</choose>
-		order by #{articleNo} desc
+		order by article_no desc
 		limit #{start}, #{listsize}
 	</select>
 	
