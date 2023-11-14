@@ -4,9 +4,9 @@
 
 <mapper namespace="com.ssafy.happyhouse.model.dao.BoardDao">
 	<insert id="registerArticle" parameterType="boardDto">
-        insert into board (user_id, subject, content)
-        values (#{userId},#{subject},#{content})
-    </insert>
+		insert into board (user_id, subject, content)
+		values (#{userId},#{subject},#{content})
+	</insert>
 
 	<select id="listArticle" parameterType="Map"
 		resultMap="basicBoard">
@@ -22,7 +22,7 @@
 		order by article_no desc
 		limit #{start}, #{listsize}
 	</select>
-	
+
 	<select id="getTotalArticleCount" parameterType="Map">
 		select count(article_no) from board
 		<choose>
@@ -35,16 +35,20 @@
 		</choose>
 	</select>
 
+	<select id="viewArticle" parameterType="int" resultMap="basicBoard">
+		select * from board where article_no = #{articleNo}
+	</select>
+
 	<update id="modifyArticle" parameterType="boardDto">
-        update board
-        set subject = #{subject}, content = #{content}
-        where article_no = #{articleNo}
-    </update>
-    
-    <delete id="deleteArticle" parameterType="int">
-        delete from board
-        where article_no = #{articleNo}
-    </delete>
+		update board
+		set subject = #{subject}, content = #{content}
+		where article_no = #{articleNo}
+	</update>
+
+	<delete id="deleteArticle" parameterType="int">
+		delete from board
+		where article_no = #{articleNo}
+	</delete>
 
 	<resultMap id="basicBoard" type="boardDto">
 		<result column="article_no" property="articleNo" />
