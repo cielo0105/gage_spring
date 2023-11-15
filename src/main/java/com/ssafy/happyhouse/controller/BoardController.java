@@ -28,7 +28,7 @@ import com.ssafy.happyhouse.util.PageNavigation;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-@CrossOrigin(origins = { "*" }, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.POST} , maxAge = 6000)
+@CrossOrigin(origins = { "*" }, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE} , maxAge = 6000)
 @RestController
 @RequestMapping("/board")
 @RequiredArgsConstructor
@@ -88,11 +88,11 @@ public class BoardController {
     
     @DeleteMapping("/{articleNo}")
     public ResponseEntity<Map<String, Object>> delete(@PathVariable int articleNo, HttpSession session) {
+    	System.out.println("1111111111111111111111"+articleNo);
         service.deleteArticle(articleNo);
         return handleSuccess(articleNo);
     }
 	
-
 	private ResponseEntity<Map<String, Object>> handleSuccess(Object data) {
 		Map<String, Object> result = new HashMap<>();
 		result.put("success", true);
