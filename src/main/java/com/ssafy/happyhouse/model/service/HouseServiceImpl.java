@@ -48,4 +48,9 @@ public class HouseServiceImpl implements HouseService{
 		return dao.getMonthlyGuInfoList(code);
 	}
 
+	@Override
+	public long getDongCode(String dong) {
+		return dao.getDongCode(dong);
+	}
+
 }

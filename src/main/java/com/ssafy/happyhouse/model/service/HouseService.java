@@ -18,4 +18,6 @@ public interface HouseService {
 	List<GuInfoDto> getGuInfoList(long code);
 
 	List<MonthlyGuInfoDto> getMonthlyGuInfoList(long code);
+
+	long getDongCode(String dong);
 }

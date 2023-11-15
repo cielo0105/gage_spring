@@ -26,8 +26,9 @@ public class HouseController {
 	private final HouseService service;
 	
 	@GetMapping("/code")
-	public ResponseEntity<Map<String, Object>> getCode() {
-		return handleSuccess("성공");
+	public ResponseEntity<Map<String, Object>> getCode(String dong) {
+//		return handleSuccess("성공");
+		return handleSuccess(service.getDongCode(dong));
 	}
 	
 	@GetMapping("/aptinfo")

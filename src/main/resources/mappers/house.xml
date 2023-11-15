@@ -15,11 +15,18 @@
 	</select>
 	
 	<select id="searchByAptNo" parameterType="Long" resultMap="houseInfoDto">
-SELECT d.*, i.*
-FROM houseinfo i join housedeal d on d.aptCode=i.aptCode
-WHERE d.aptCode = #{code}
-ORDER BY dealYear DESC, dealMonth DESC,dealDay DESC
-LIMIT 100
+		SELECT d.*, i.*
+		FROM houseinfo i join housedeal d on d.aptCode=i.aptCode
+		WHERE d.aptCode = #{code}
+		ORDER BY dealYear DESC, dealMonth DESC,dealDay DESC
+		LIMIT 100
+	</select>
+	
+	<select id="getDongCode" parameterType="String">
+		SELECT distinct dongCode
+		FROM houseinfo 
+		WHERE dong = #{dong}
+		LIMIT 1
 	</select>
 
 	<resultMap type="houseInfoDto" id="basicHouseInfo">
