@@ -16,4 +16,5 @@ public class MemberDto {
 	private String userName;
 	private String userPass;
 	private String joinDate;
+	private String tempPass;
 }
