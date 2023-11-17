@@ -15,7 +15,7 @@ public class NewsService {
 
 	public List<String> getNewsList() {
 		// [Test URL] : SBS News
-		String URL = "https://news.naver.com/main/list.naver?mode=LS2D&mid=shm&sid1=101&sid2=260";
+		String URL = "https://youth.seoul.go.kr/site/main/customSupp/list?targetMulti=&ageMulti=&polDivSeoulMulti=PDS_11#n";
 
 		// [Document] : Jsoup으로 가져온 HTML을 담을 객체
 		Document doc = null;

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.dao.ImportDao">
+	<insert id="registIncome" parameterType="String">
+		insert into board values VALUES
+		<foreach collection="array" item="item" separator=",">
+			(#{item.buldGbn},
+			#{item.levelNoOut},
+			#{item.metroNm},
+			#{item.netOperIncome},
+			#{item.netOperIncome2},
+			#{item.regionCd},
+			#{item.regionNm},
+			#{item.researchDate},
+			#{item.sectionNm},
+			#{item.sidoNm})
+		</foreach>
+	</insert>
+</mapper>
