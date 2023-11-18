@@ -32,23 +32,26 @@ public class OpenApiService {
 		String checkCountUrl = sb.append(url).append("?page=1&perPage=1&serviceKey=").append(serviceKey).toString();
 		int matchCount = (int) getData(checkCountUrl).get("matchCount");
 		
-		System.out.println("totalCount="+ matchCount);
+		System.out.println("matchCount="+ matchCount);
 		
 		sb.setLength(0);
 		
 //		totalCount만큼 가져오기
 		int currentCount = 0;
 		
+		System.out.println("데이터 insert 시작");
 		for(int i=1; currentCount<matchCount; i++) {
 			currentCount+= 2000;
+			sb.setLength(0);
 			String resultUrl = sb.append(url).append("?page=").append(i).append("&perPage=").append(currentCount).append("&cond%5BRESEARCH_DATE%3A%3AGTE%5D=201811&serviceKey=").append(serviceKey).toString();
 			HashMap<String,Object> result = getData(resultUrl);
 			List<Object> list = (List<Object>) result.get("data");
-			System.out.println(list);
 			
 //		새로 받아온 데이터 삽입
 			dao.registIncome(list);
+			System.out.println(currentCount+"개 insert 완료");
 		}
+		System.out.println("데이터 insert 종료");
 		
 		return "success";
 	}
@@ -62,7 +65,6 @@ public class OpenApiService {
 		ResponseEntity<HashMap> resultMap = restTemplate.getForEntity(uri, HashMap.class);
 
 		HashMap<String, Object> result = resultMap.getBody();
-		System.out.println(result);
 		return result;
 	}
 }

@@ -6,6 +6,7 @@
 	<delete id="deleteIncome">
 		delete from income
 	</delete>
+	
 	<insert id="registIncome" parameterType="java.util.List">
 		insert into income values
 		<foreach collection="list" item="item" separator=",">
