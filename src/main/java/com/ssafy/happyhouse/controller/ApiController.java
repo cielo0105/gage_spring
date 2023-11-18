@@ -29,13 +29,15 @@ import lombok.extern.slf4j.Slf4j;
 public class ApiController {
 	private final OpenApiService service;
 	
+//	한국부동산원_상업용부동산 임대동향 조사 통계 조회 서비스-순영업 소득 조회
+//	https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15099345
     @GetMapping("/income")
     public ResponseEntity<Map<String, Object>> income() throws JsonProcessingException, URISyntaxException {
-    	String serviceKey = "z3I8BQhzcY/kk+JswXJSKGumtfSXcuo6mT0Jcl1zcF6CqZNo5wJI4mYzJtaUgXflLnQhDji1eAk2yIsfF6YWeA==";
-    	String url = "https://api.odcloud.kr/api/CommercialRealEstateLeaseTrendSvc/v1/getNetOperationIncome?page=1&perPage=10&serviceKey=z3I8BQhzcY%2Fkk%2BJswXJSKGumtfSXcuo6mT0Jcl1zcF6CqZNo5wJI4mYzJtaUgXflLnQhDji1eAk2yIsfF6YWeA%3D%3D";
-        System.out.println(service.getData(url));
-    	return handleSuccess("");
+    	String url = "https://api.odcloud.kr/api/CommercialRealEstateLeaseTrendSvc/v1/getNetOperationIncome";
+    	return handleSuccess(service.addIncome(url));
     }
+    
+    
 	
 	private ResponseEntity<Map<String, Object>> handleSuccess(Object data) {
 		Map<String, Object> result = new HashMap<>();
