@@ -32,10 +32,10 @@ public class EmailController {
     	
         EmailMessage emailMessage = EmailMessage.builder()
                 .to(email)
-                .subject("[SAVIEW] 임시 비밀번호 발급")
+                .subject("[GAGE] 임시 비밀번호 발급")
                 .build();
 
-        emailService.sendMail(emailMessage, "password");
+        emailService.sendMail(emailMessage, "임시 비밀번호");
 
         return ResponseEntity.ok().build();
     }
@@ -47,10 +47,10 @@ public class EmailController {
     	
         EmailMessage emailMessage = EmailMessage.builder()
                 .to(email)
-                .subject("[SAVIEW] 이메일 인증을 위한 인증 코드 발송")
+                .subject("[GAGE] 이메일 인증을 위한 인증 코드 발송")
                 .build();
 
-        String code = emailService.sendMail(emailMessage, "email");
+        String code = emailService.sendMail(emailMessage, "이메일 인증번호");
         return ResponseEntity.ok(code);
     }
 }

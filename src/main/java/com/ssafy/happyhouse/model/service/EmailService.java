@@ -30,7 +30,7 @@ public class EmailService {
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, false, "UTF-8");
             mimeMessageHelper.setTo(emailMessage.getTo()); // 메일 수신자
             mimeMessageHelper.setSubject(emailMessage.getSubject()); // 메일 제목
-            mimeMessageHelper.setText(type+"인증번호:"+authNum, true); // 메일 본문 내용, HTML 여부
+            mimeMessageHelper.setText(type+":"+authNum, true); // 메일 본문 내용, HTML 여부
             mimeMessageHelper.setFrom("qlenfrl101@naver.com");
             javaMailSender.send(mimeMessage);
 
