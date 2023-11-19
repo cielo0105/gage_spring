@@ -34,6 +34,11 @@ public class GageServiceImpl implements GageService{
 	public List<String> getResult(String sub) {
 		return dao.getResult(sub);
 	}
+
+	@Override
+	public List<String> getGageList(String code) {
+		return dao.getGageList(code);
+	}
 	
 	
 }

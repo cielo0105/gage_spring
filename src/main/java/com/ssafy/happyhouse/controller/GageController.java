@@ -45,6 +45,11 @@ public class GageController {
 	public ResponseEntity<Map<String, Object>> getResult(String sub) {
 		return handleSuccess(service.getResult(sub));
 	}
+	
+	@GetMapping("/list")
+	public ResponseEntity<Map<String, Object>> getGageList(String code) {
+		return handleSuccess(service.getGageList(code));
+	}
 
 	private ResponseEntity<Map<String, Object>> handleSuccess(Object data) {
 		Map<String, Object> result = new HashMap<>();

@@ -16,4 +16,6 @@ public interface GageService {
 	List<String> getSubCategory(String mid);
 
 	List<String> getResult(String sub);
+
+	List<String> getGageList(String code);
 }

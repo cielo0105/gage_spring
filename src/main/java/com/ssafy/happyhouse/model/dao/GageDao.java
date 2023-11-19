@@ -13,4 +13,6 @@ public interface GageDao {
 	List<String> getSubCategory(String main); // 중분류
 
 	List<String> getResult(String sub); // 결과
+
+	List<String> getGageList(String code);
 }

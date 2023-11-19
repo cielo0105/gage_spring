@@ -27,4 +27,10 @@
 		from gageinfo 
 		where indsSclsCd = #{indsSclsCd};
 	</select>
+	
+	<select id="getGageList" parameterType="String" resultType="map">
+		select bizesid, ldongNm, ldongCd, lon, lat
+		from gageinfo 
+		where ldongCd = #{ldongCd};
+	</select>
 </mapper>
