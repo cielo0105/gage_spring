@@ -27,8 +27,7 @@ import com.ssafy.happyhouse.model.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@CrossOrigin(origins = { "*" }, methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
-		RequestMethod.POST }, maxAge = 6000)
+@CrossOrigin(origins = { "*" }, methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.POST }, maxAge = 6000)
 @RestController
 @RequestMapping("/member")
 @RequiredArgsConstructor
