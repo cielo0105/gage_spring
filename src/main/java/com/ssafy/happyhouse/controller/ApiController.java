@@ -37,6 +37,26 @@ public class ApiController {
     	return handleSuccess(service.addIncome(url));
     }
     
+    // 지역별 연간 소득주익률 조회
+    @GetMapping("/rate")
+    public ResponseEntity<Map<String, Object>> incomeRate() throws JsonProcessingException, URISyntaxException {
+    	String url = "https://api.odcloud.kr/api/CommercialRealEstateLeaseTrendSvc/v1/getIncomRateOfReturnYear";
+    	return handleSuccess(service.addIncomeRate(url));
+    }
+    
+    // 지역별 임대료 조회
+    @GetMapping("/lease")
+    public ResponseEntity<Map<String, Object>> lease() throws JsonProcessingException, URISyntaxException {
+    	String url = "https://api.odcloud.kr/api/CommercialRealEstateLeaseTrendSvc/v1/getLeasePrice";
+    	return handleSuccess(service.addLease(url));
+    }
+    
+    // 행정동 단위 상가업소 조회
+    @GetMapping("/gage")
+    public ResponseEntity<Map<String, Object>> gage() throws JsonProcessingException, URISyntaxException {
+    	String url = "https://apis.data.go.kr/B553077/api/open/sdsc2/storeListInDong";
+    	return handleSuccess(service.addGage(url));
+    }
     
 	
 	private ResponseEntity<Map<String, Object>> handleSuccess(Object data) {
