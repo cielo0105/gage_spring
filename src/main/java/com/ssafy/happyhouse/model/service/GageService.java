@@ -8,16 +8,14 @@ import com.ssafy.happyhouse.model.dto.HouseDealDto;
 import com.ssafy.happyhouse.model.dto.HouseInfoDto;
 import com.ssafy.happyhouse.model.dto.MonthlyGuInfoDto;
 
-public interface HouseService {
-	List<HouseInfoDto> searchByDongCode(long dongCode);
+public interface GageService {
+	List<String> getMainCategory(); // 대분류
 
-	List<HouseInfoDto> searchByAptNo(long aptNo);
+	List<String> getMiddleCategory(String main);
 
-	DongCodeDto dongCode(DongCodeDto dongCode);
+	List<String> getSubCategory(String mid);
 
-	List<GuInfoDto> getGuInfoList(long code);
+	List<String> getResult(String sub);
 
-	List<MonthlyGuInfoDto> getMonthlyGuInfoList(long code);
-
-	long getDongCode(String dong);
+	List<String> getGageList(String code);
 }

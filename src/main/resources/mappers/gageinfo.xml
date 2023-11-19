@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.dao.GageDao">
+
+	<select id="getMainCategory" resultType="map">
+		select distinct indsLclsNm, indsLclsCd from gageinfo;
+	</select>
+
+
+	<select id="getMiddleCategory" parameterType="String" resultType="map">
+		select distinct indsMclsNm, indsMclsCd 
+		from gageinfo 
+		where indsLclsCd = #{indsLclsCd};
+	</select>
+	
+
+	<select id="getSubCategory" parameterType="String" resultType="map">
+		select distinct indsSclsNm, indsSclsCd 
+		from gageinfo 
+		where indsMclsCd = #{indsMclsCd};
+	</select>
+	
+	<select id="getResult" parameterType="String" resultType="map">
+		select bizesid, ldongNm, ldongCd, lon, lat
+		from gageinfo 
+		where indsSclsCd = #{indsSclsCd};
+	</select>
+	
+	<select id="getGageList" parameterType="String" resultType="map">
+		select bizesid, ldongNm, ldongCd, lon, lat
+		from gageinfo 
+		where ldongCd = #{ldongCd};
+	</select>
+</mapper>

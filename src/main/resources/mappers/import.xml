@@ -3,25 +3,124 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ssafy.happyhouse.model.dao.ImportDao">
+	 
+	<insert id="registIncome" parameterType="java.util.List">
+    	insert ignore into income values
+    	<foreach collection="list" item="item" separator=",">
+        (
+            #{item.BULD_GBN},
+            #{item.LEVEL_NO_OUT},
+            #{item.METRO_NM},
+            #{item.NET_OPER_INCOME},
+            #{item.NET_OPER_INCOME2},
+            #{item.REGION_CD},
+            #{item.REGION_NM},
+            #{item.RESEARCH_DATE},
+            #{item.SECTION_NM},
+            #{item.SIDO_NM}
+        )
+   	 </foreach>
+	</insert>
+	
 	<delete id="deleteIncome">
 		delete from income
 	</delete>
+
+	<!-- 지역별 임대료 조회 -->
+	<insert id="registLease" parameterType="java.util.List">
+    	insert into leaseprice values
+    	<foreach collection="list" item="item" separator=",">
+        (
+            #{item.BULD_GBN},
+            #{item.LEVEL_NO_OUT},
+            #{item.METRO_NM},
+            #{item.REGION_CD},
+            #{item.REGION_NM},
+            #{item.RENT_FEE},
+            #{item.RESEARCH_DATE},
+            #{item.SECTION_NM},
+            #{item.SIDO_NM}
+        )
+    	</foreach>
+	</insert>
+
+ 	<delete id="deleteLease">
+		delete from leaseprice;
+	</delete>
 	
-	<insert id="registIncome" parameterType="java.util.List">
-		insert into income values
+	
+	<!-- 지역별 연간 소득수익률 조회 -->
+	<insert id="registIncomeRate" parameterType="java.util.List">
+    	insert into incomerate values
+    	<foreach collection="list" item="item" separator=",">
+        (
+            #{item.BULD_GBN},
+            #{item.INCOME_RATE},
+            #{item.LEVEL_NO_OUT},
+            #{item.METRO_NM},
+            #{item.REGION_CD},
+            #{item.REGION_NM},
+            #{item.RESEARCH_DATE},
+            #{item.SECTION_NM},
+            #{item.SIDO_NM}
+        )
+    	</foreach>
+	</insert>
+	
+	 <delete id="deleteIncomeRate">
+		delete from incomerate;
+	 </delete>
+	 
+	
+	 
+	 <insert id="registGage" parameterType="java.util.List">
+		insert ignore into gageinfo values
 		<foreach collection="list" item="item" separator=",">
 		(
-			#{item.BULD_GBN},
-			#{item.LEVEL_NO_OUT},
-			#{item.METRO_NM},
-			#{item.NET_OPER_INCOME},
-			#{item.NET_OPER_INCOME2},
-			#{item.REGION_CD},
-			#{item.REGION_NM},
-			#{item.RESEARCH_DATE},
-			#{item.SECTION_NM},
-			#{item.SIDO_NM}
+			#{item.bizesId},
+			#{item.bizesNm},
+			#{item.brchNm},
+			#{item.indsLclsCd},
+			#{item.indsLclsNm},
+			#{item.indsMclsCd},
+			#{item.indsMclsNm},
+			#{item.indsSclsCd},
+			#{item.indsSclsNm},
+			#{item.ksicCd},
+			#{item.ksicNm},
+			#{item.ctprvnCd},
+			#{item.ctprvnNm},
+			#{item.signguCd},
+			#{item.signguNm},
+			#{item.adongCd},
+			#{item.adongNm},
+			#{item.ldongCd},
+			#{item.ldongNm},
+			#{item.lnoCd},
+			#{item.plotSctCd},
+			#{item.plotSctNm},
+			#{item.lnoMnno},
+			#{item.lnoSlno},
+			#{item.lnoAdr},
+			#{item.rdnmCd},
+			#{item.rdnm},
+			#{item.bldMnno},
+			#{item.bldSlno},
+			#{item.bldMngNo},
+			#{item.bldNm},
+			#{item.rdnmAdr},
+			#{item.newZipcd},
+			#{item.dongNo},
+			#{item.flrNo},
+			#{item.hoNo},
+			#{item.lon},
+			#{item.lat}
 			)
 		</foreach>
 	</insert>
+	
+	 <delete id="deleteGage">
+		delete from gageinfo;
+	</delete>
+	 
 </mapper>
