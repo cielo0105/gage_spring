@@ -23,14 +23,39 @@
 	</select>
 	
 	<select id="getResult" parameterType="String" resultType="map">
-		select bizesid, ldongNm, ldongCd, lon, lat
+		select bizesid, ldongNm, ldongCd, lng, lat
 		from gageinfo 
-		where indsSclsCd = #{indsSclsCd};
+		where indsSclsCd = #{indsSclsCd}
+		limit 10
+
 	</select>
 	
 	<select id="getGageList" parameterType="String" resultType="map">
-		select bizesid, ldongNm, ldongCd, lon, lat
+		select bizesid, bizesNm, ldongNm, ldongCd, lng, lat
 		from gageinfo 
-		where ldongCd = #{ldongCd};
+		where ldongCd = #{ldongCd}
+		limit 100
+
 	</select>
+	
+	<!-- 지도 범위에 있는 동 정보 가져오기 -->
+	<select id="getDongList" parameterType="String" resultType="map">
+		select dong, lat, lng
+		from donglocation 
+		where lat between #{bx} and #{tx}
+		and lng between #{by} and #{ty}
+	</select>
+	
+	<select id="getGageCountByCode" parameterType="String" resultType="int">
+		select count(*)
+		from gageinfo  
+		where indsSclsNm = #{indsSclsNm}
+		and ldongNm = #{ldongNm}
+	</select> 
+	
+		<select id="getGageCount" resultType="int">
+		select count(*)
+		from gageinfo  
+		where ldongNm = #{ldongNm}
+	</select> 
 </mapper>

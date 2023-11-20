@@ -40,5 +40,26 @@ public class GageServiceImpl implements GageService{
 		return dao.getGageList(code);
 	}
 	
+	@Override
+	public List<String> getDongList(String bx, String by, String tx, String ty) {
+		return dao.getDongList(bx,by,tx,ty);
+	}
+
+	@Override
+	public String[] getLocation(String code) {
+		return dao.getLocation(code);
+	}
+
+	@Override
+	public int getGageCount(String dong) {
+		return dao.getGageCount(dong);
+	}
+
+	@Override
+	public int getGageCountByCode(String code, String dong) {
+		return dao.getGateCountByCode(code, dong);
+	}
+
+	
 	
 }
