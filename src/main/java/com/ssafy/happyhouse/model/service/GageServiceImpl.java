@@ -39,6 +39,15 @@ public class GageServiceImpl implements GageService{
 	public List<String> getGageList(String code) {
 		return dao.getGageList(code);
 	}
+
+	@Override
+	public List<String> getDongList(String bx, String by, String tx, String ty) {
+		return dao.getDongList(bx,by,tx,ty);
+	}
+
+
+
+
 	
 	
 }

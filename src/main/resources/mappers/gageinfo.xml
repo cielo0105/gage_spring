@@ -23,14 +23,25 @@
 	</select>
 	
 	<select id="getResult" parameterType="String" resultType="map">
-		select bizesid, ldongNm, ldongCd, lon, lat
+		select bizesid, ldongNm, ldongCd, lng, lat
 		from gageinfo 
-		where indsSclsCd = #{indsSclsCd};
+		where indsSclsCd = #{indsSclsCd}
+		limit 10
 	</select>
 	
 	<select id="getGageList" parameterType="String" resultType="map">
-		select bizesid, ldongNm, ldongCd, lon, lat
+		select bizesid, bizesNm, ldongNm, ldongCd, lng, lat
 		from gageinfo 
-		where ldongCd = #{ldongCd};
+		where ldongCd = #{ldongCd}
+		limit 100
 	</select>
+	
+	<select id="getDongList" parameterType="String" resultType="map">
+		select dong
+		from donglocation 
+		where lat between #{bx} and #{tx}
+		and lng between #{by} and #{ty}
+	</select>
+	 
+	 
 </mapper>

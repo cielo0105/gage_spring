@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.happyhouse.model.service.GageService;
@@ -49,6 +50,14 @@ public class GageController {
 	@GetMapping("/list")
 	public ResponseEntity<Map<String, Object>> getGageList(String code) {
 		return handleSuccess(service.getGageList(code));
+	}
+	
+	@GetMapping("/range")
+	public ResponseEntity<Map<String, Object>> getRangeDong( @RequestParam("bx") String bx,
+            @RequestParam("by") String by,
+            @RequestParam("tx") String tx,
+            @RequestParam("ty") String ty) { // map 범위 안에 존재하는 동 코드 구하기
+		return handleSuccess(service.getDongList(bx,by,tx,ty));
 	}
 
 	private ResponseEntity<Map<String, Object>> handleSuccess(Object data) {
