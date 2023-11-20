@@ -11,10 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DongDto {
-	private String sido;
-	private String gu;
-	private String dong;
-	private String lat;
-	private String lng;
+public class DongCodeDto {
+	private String dongCode;
+	private String sidoName;
+	private String gugunName;
+	private String dongName;
 }

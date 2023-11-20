@@ -2,6 +2,11 @@ package com.ssafy.happyhouse.model.service;
 
 import java.util.List;
 
+import com.ssafy.happyhouse.model.dto.DongCodeDto;
+import com.ssafy.happyhouse.model.dto.GuInfoDto;
+import com.ssafy.happyhouse.model.dto.HouseDealDto;
+import com.ssafy.happyhouse.model.dto.HouseInfoDto;
+import com.ssafy.happyhouse.model.dto.MonthlyGuInfoDto;
 
 public interface GageService {
 	List<String> getMainCategory(); // 대분류
@@ -12,9 +17,5 @@ public interface GageService {
 
 	List<String> getResult(String sub);
 
-
 	List<String> getGageList(String code);
-
-
-	Object getDongList(String bx, String by, String tx, String ty);
 }
