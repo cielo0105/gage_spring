@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.dao.DealDao">
+	<insert id="registDeal" parameterType="DealDto">
+		insert into deal (type, address, address_detail, area, recommend, floor, floor_all, description, img, amount1, amount2, lat, lon)
+		VALUES (
+		#{type}, #{address}, #{addressDetail}, #{area}, #{recommend}, #{floor}, #{floorAll}, #{desc}, #{img}, #{amount1}, #{amount2}, #{lat}, #{lon}
+		)
+	</insert>
+</mapper>

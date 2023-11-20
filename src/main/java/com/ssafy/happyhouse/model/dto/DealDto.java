@@ -15,11 +15,16 @@ public class DealDto {
 	private int id;
 	private String type;
 	private String address;
-	private String detailAddress;
+	private String addressDetail;
 	private double area;
 	private String recommend;
 	private int floor;
-	private boolean elevator;
+	private int floorAll;
 	private String desc;
+	private String img;
+	private int amount1;
+	private int amount2;
 	private Date createDate;
+	private String lat;
+	private String lon;
 }
