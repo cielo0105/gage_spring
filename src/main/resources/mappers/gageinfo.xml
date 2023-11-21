@@ -5,43 +5,42 @@
 <mapper namespace="com.ssafy.happyhouse.model.dao.GageDao">
 
 	<select id="getMainCategory" resultType="map">
-		select distinct indsLclsNm, indsLclsCd from gageinfo;
+		select * from mainupjong
 	</select>
 
 
 	<select id="getMiddleCategory" parameterType="String" resultType="map">
-		select distinct indsMclsNm, indsMclsCd 
-		from gageinfo 
+		select indsMclsNm, indsMclsCd 
+		from midupjong 
 		where indsLclsCd = #{indsLclsCd};
 	</select>
 	
 
 	<select id="getSubCategory" parameterType="String" resultType="map">
-		select distinct indsSclsNm, indsSclsCd 
-		from gageinfo 
+		select indsSclsNm, indsSclsCd 
+		from subupjong 
 		where indsMclsCd = #{indsMclsCd};
 	</select>
 	
 	<select id="getResult" parameterType="String" resultType="map">
-		select bizesid, ldongNm, ldongCd, lng, lat
+		select bizesid, adongNm, adongCd, lng, lat
 		from gageinfo 
 		where indsSclsCd = #{indsSclsCd}
-		limit 10
 
 	</select>
 	
 	<select id="getGageList" parameterType="String" resultType="map">
-		select bizesid, bizesNm, ldongNm, ldongCd, lng, lat
+		select bizesid, bizesNm, adongnm, adongCd, lng, lat
 		from gageinfo 
-		where ldongCd = #{ldongCd}
+		where adongCd = #{adongCd}
 		limit 100
 
 	</select>
 	
 	<!-- 지도 범위에 있는 동 정보 가져오기 -->
 	<select id="getDongList" parameterType="String" resultType="map">
-		select dong, lat, lng
-		from donglocation 
+		select left(code,length(code)-2) as code, dong, lat, lng
+		from hcode 
 		where lat between #{bx} and #{tx}
 		and lng between #{by} and #{ty}
 	</select>
@@ -50,12 +49,12 @@
 		select count(*)
 		from gageinfo  
 		where indsSclsNm = #{indsSclsNm}
-		and ldongNm = #{ldongNm}
+		and adongNm = #{adongNm}
 	</select> 
 	
 		<select id="getGageCount" resultType="int">
 		select count(*)
 		from gageinfo  
-		where ldongNm = #{ldongNm}
+		where adongNm = #{adongNm}
 	</select> 
 </mapper>

@@ -58,6 +58,14 @@ public class ApiController {
     	return handleSuccess(service.addGage(url));
     }
     
+    // 업종 분류
+    @GetMapping("/upjong")
+    public ResponseEntity<Map<String, Object>> upjong() throws JsonProcessingException, URISyntaxException {
+    	String url = "https://apis.data.go.kr/B553077/api/open/sdsc2/smallUpjongList";
+    	return handleSuccess(service.addUpjong(url));
+    }
+    
+    
 	
 	private ResponseEntity<Map<String, Object>> handleSuccess(Object data) {
 		Map<String, Object> result = new HashMap<>();
