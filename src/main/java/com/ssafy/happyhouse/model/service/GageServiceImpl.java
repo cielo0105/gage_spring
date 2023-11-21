@@ -57,7 +57,7 @@ public class GageServiceImpl implements GageService{
 
 	@Override
 	public int getGageCountByCode(String code, String dong) {
-		return dao.getGateCountByCode(code, dong);
+		return dao.getGageCountByCode(code, dong);
 	}
 
 	

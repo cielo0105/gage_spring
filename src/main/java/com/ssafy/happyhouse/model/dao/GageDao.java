@@ -24,6 +24,6 @@ public interface GageDao {
 
 	int getGageCount(String dong);
 
-	int getGateCountByCode(String code, String dong); 
+	int getGageCountByCode(String code, String dong); 
 
 }

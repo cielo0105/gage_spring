@@ -1,9 +1,11 @@
 package com.ssafy.happyhouse.model.service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public interface ReportService {
 
-	List<String> getLocalPeopleRank(String code);
+	Map<String, Double> getLocalPeopleRank(String code);
 
 }

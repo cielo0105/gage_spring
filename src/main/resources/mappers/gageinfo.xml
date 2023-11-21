@@ -48,8 +48,8 @@
 	<select id="getGageCountByCode" parameterType="String" resultType="int">
 		select count(*)
 		from gageinfo  
-		where indsSclsNm = #{indsSclsNm}
-		and adongNm = #{adongNm}
+		where indsSclsCd = #{code}
+		and adongNm = #{dong}
 	</select> 
 	
 		<select id="getGageCount" resultType="int">

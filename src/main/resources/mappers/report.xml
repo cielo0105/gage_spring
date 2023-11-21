@@ -4,7 +4,8 @@
 
 <mapper namespace="com.ssafy.happyhouse.model.dao.ReportDao">
 	<select id="getLocalPeopleRank" parameterType="String" resultType="map">
-		
+		select * from people_avg_view
+		where code = #{code}
 	</select>
 
 </mapper>
