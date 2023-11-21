@@ -1,5 +1,7 @@
 package com.ssafy.happyhouse.model.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.ssafy.happyhouse.model.dao.DealDao;
@@ -15,5 +17,10 @@ public class DealServiceImpl implements DealService{
 	@Override
 	public int regist(DealDto dealDto) {
 		return dao.registDeal(dealDto);
+	}
+
+	@Override
+	public List<DealDto> getList(double ha, double qa, double oa, double pa) {
+		return dao.getList(ha, qa, oa, pa);
 	}
 }

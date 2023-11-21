@@ -27,4 +27,5 @@ public class DealDto {
 	private Date createDate;
 	private String lat;
 	private String lon;
+	private String state;
 }

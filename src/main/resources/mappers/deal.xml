@@ -9,4 +9,27 @@
 		#{type}, #{address}, #{addressDetail}, #{area}, #{recommend}, #{floor}, #{floorAll}, #{desc}, #{img}, #{amount1}, #{amount2}, #{lat}, #{lon}
 		)
 	</insert>
+	
+	<select id="getList">
+		select * from deal where state='ing' and lon between #{ha} and #{oa} and lat between #{qa} and #{pa}
+	</select>
+	
+	<resultMap type="dealDto" id="basicDeal">
+		<result column="id" property="id" />
+		<result column="type" property="type" />
+		<result column="address" property="address" />
+		<result column="address_detail" property="addressDetail" />
+		<result column="area" property="area" />
+		<result column="recommend" property="recommend" />
+		<result column="floor" property="floor" />
+		<result column="floor_all" property="floorAll" />
+		<result column="description" property="desc" />
+		<result column="create_date" property="createDate" />
+		<result column="img" property="img" />
+		<result column="amount1" property="amount1" />
+		<result column="amount2" property="amount2" />
+		<result column="lat" property="lat" />
+		<result column="lon" property="lon" />
+		<result column="state" property="state" />
+	</resultMap>
 </mapper>
