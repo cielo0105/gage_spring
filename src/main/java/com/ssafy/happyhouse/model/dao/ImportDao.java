@@ -10,8 +10,10 @@ public interface ImportDao {
 	int registLease(List<Object> list);
 	int registIncomeRate(List<Object> list);
 	int registGage(List<Object> list);
+	int registUpjong(List<Object> list);
 	void deleteIncome();
 	void deleteGage();
 	void deleteLease();
 	void deleteIncomeRate();
+	void deleteUpjong();
 }

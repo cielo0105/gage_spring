@@ -150,14 +150,41 @@ public class OpenApiService {
 			currentCount+= 1000;
 			sb.setLength(0);
 			String resultUrl = sb.append(url).append("?serviceKey=").append(serviceKey).append("&pageNo=").append(i).append("&numOfRows=1000").append("&divId=ctprvnCd&key=11&type=json").toString();
-			System.out.println(resultUrl);
+//			System.out.println(resultUrl);
 			HashMap<String,Object> result = getData(resultUrl);
+			System.out.println(result);
 			List<Object> list = (List<Object>) result.get("items");
 			
 //		새로 받아온 데이터 삽입
 			dao.registGage(list);
 //			System.out.println(currentCount+"개 insert 완료");
 		}
+//		System.out.println("데이터 insert 종료");
+		
+		return "success";
+	}
+	
+
+	public String addUpjong(String url)  throws JsonProcessingException, URISyntaxException {
+		StringBuilder sb = new StringBuilder();
+//		기존 데이터 삭제
+//		dao.deleteUpjong();
+		
+		sb.setLength(0);
+//		totalCount만큼 가져오기
+		int currentCount = 0;
+		
+//		System.out.println("데이터 insert 시작");
+
+			sb.setLength(0);
+			String resultUrl = sb.append(url).append("?serviceKey=").append(serviceKey).append("&type=json").toString();
+			HashMap<String,Object> result = getData(resultUrl);
+			List<Object> list = (List<Object>) result.get("items");
+			System.out.println("list"+list);
+//		새로 받아온 데이터 삽입
+			dao.registUpjong(list);
+//			System.out.println(currentCount+"개 insert 완료");
+		
 //		System.out.println("데이터 insert 종료");
 		
 		return "success";
@@ -170,9 +197,9 @@ public class OpenApiService {
 
 		URI uri = new URI(url);
 		ResponseEntity<HashMap> resultMap = restTemplate.getForEntity(uri, HashMap.class);
-
-//		HashMap<String, Object> result = (HashMap<String, Object>) resultMap.getBody().get("body"); // addGage
-		HashMap<String, Object> result = (HashMap<String, Object>) resultMap.getBody();
+		HashMap<String, Object> result = (HashMap<String, Object>) resultMap.getBody().get("body"); // addGage, addUpjong
+//		HashMap<String, Object> result = (HashMap<String, Object>) resultMap.getBody(); // addIncome
 		return result;
 	}
+
 }

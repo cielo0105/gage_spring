@@ -122,5 +122,24 @@
 	 <delete id="deleteGage">
 		delete from gageinfo;
 	</delete>
+	
+	 <!-- 지역별 임대료 조회 -->
+	<insert id="registUpjong" parameterType="java.util.List">
+    	insert into subupjong values
+    	<foreach collection="list" item="item" separator=",">
+        (
+            #{item.indsLclsCd},
+            #{item.indsLclsNm},
+            #{item.indsMclsCd},
+            #{item.indsMclsNm},
+            #{item.indsSclsCd},
+            #{item.indsSclsNm}
+
+        )
+    	</foreach>
+	</insert>
 	 
+	  <delete id="deleteUpjong">
+		delete from subupjong;
+	</delete>
 </mapper>
