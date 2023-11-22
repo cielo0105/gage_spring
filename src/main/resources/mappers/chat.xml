@@ -3,29 +3,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ssafy.happyhouse.model.dao.ChatDao">
-	<select id="getList" resultMap="basicChat" parameterType="">
-	SELECT
-    c.id,
-    c.user1,
-    c.user2,
-    cl.content AS last_msg,
-    cl.create_date AS last_send
-FROM
-    chat c
-JOIN
-    chatlog cl ON c.id = cl.chat_id
-LEFT JOIN
-    chatlog cl2 ON c.id = cl2.chat_id AND cl.create_date < cl2.create_date
-WHERE
-    (c.user1 = '1111' OR c.user2 = '1111')
-    AND cl2.create_date IS NULL;
+	<select id="getList" resultMap="basicChat" parameterType="string">
+		select c.id, c.user1, c.user2, cl.content AS last_msg, cl.create_date AS last_send
+		FROM chat c JOIN chatlog cl ON c.id = cl.chat_id
+		LEFT JOIN chatlog cl2 ON c.id = cl2.chat_id AND cl.create_date &lt; cl2.create_date
+		WHERE (c.user1 = #{id} OR c.user2 = #{id}) AND cl2.create_date IS NULL
 	</select>
-	
+
 	<resultMap type="ChatDto" id="basicChat">
-		<result column="id" property="id"/>
-		<result column="user1" property="user1"/>
-		<result column="user2" property="user2"/>
-		<result column="last_msg" property="lastMsg"/>
-		<result column="last_send" property="lastSend"/>
+		<result column="id" property="id" />
+		<result column="user1" property="user1" />
+		<result column="user2" property="user2" />
+		<result column="last_msg" property="lastMsg" />
+		<result column="last_send" property="lastSend" />
 	</resultMap>
 </mapper>
