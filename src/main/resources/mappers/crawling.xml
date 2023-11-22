@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.dao.NewsDao">
+	<insert id="registNews" >
+		insert into news (title, url)
+		values (#{title},#{url})
+		
+	</insert>
+
+	<delete id="deleteNews">
+		delete from news
+	</delete>
+	
+	<select id="getNews" resultType="map">
+		select title, url from news
+		limit 8;
+	</select>
+	
+	<insert id="registInfo" >
+		insert into startupinfo (title, url)
+		values (#{title},#{url})
+	</insert>
+	
+	<select id="getInfo" resultType="map">
+		select title, url from startupinfo
+		limit 8;
+	</select>
+	
+		<insert id="registSupport" >
+		insert into supportinfo (title, url, img)
+		values (#{title},#{url}, #{img})
+	</insert>
+	
+	<select id="getSupport" resultType="map">
+		select title, url, img from supportinfo
+		limit 8;
+	</select>
+	
+</mapper>
