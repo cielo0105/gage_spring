@@ -1,5 +1,6 @@
 package com.ssafy.happyhouse.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -17,9 +18,11 @@ public interface GageService {
 	
 	List<String> getDongList(String bx, String by, String tx, String ty);
 
-	String[] getLocation(String code);
+	List<String> getLocation(String code);
 
 	int getGageCount(String dong);
 
 	int getGageCountByCode(String code, String dong);
+
+	HashMap<String, String> getCategory(String code);
 }

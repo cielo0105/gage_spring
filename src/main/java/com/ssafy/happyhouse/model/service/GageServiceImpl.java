@@ -1,6 +1,7 @@
 package com.ssafy.happyhouse.model.service;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -46,8 +47,9 @@ public class GageServiceImpl implements GageService{
 	}
 
 	@Override
-	public String[] getLocation(String code) {
-		return dao.getLocation(code);
+	public List<String> getLocation(String dong) {
+		System.out.println("-----------"+dao.getLocation(dong));
+		return dao.getLocation(dong);
 	}
 
 	@Override
@@ -58,6 +60,11 @@ public class GageServiceImpl implements GageService{
 	@Override
 	public int getGageCountByCode(String code, String dong) {
 		return dao.getGageCountByCode(code, dong);
+	}
+
+	@Override
+	public HashMap<String,String> getCategory(String code) {
+		return dao.getCategory(code);
 	}
 
 	
