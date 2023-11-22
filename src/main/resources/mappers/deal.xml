@@ -10,7 +10,7 @@
 		)
 	</insert>
 	
-	<select id="getList">
+	<select id="getList" resultMap="basicDeal">
 		select * from deal where state='ing' and lon between #{ha} and #{oa} and lat between #{qa} and #{pa}
 	</select>
 	
