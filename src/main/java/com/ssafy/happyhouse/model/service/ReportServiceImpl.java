@@ -23,6 +23,7 @@ public class ReportServiceImpl implements ReportService{
 		result = dao.getLocalPeopleRank(code);
 		System.out.println(result);
 		result.remove("code");
+		result.remove("total");
 		
 		List<Map.Entry<String, Double>> entryList = new LinkedList<>(result.entrySet());
 		
@@ -39,11 +40,11 @@ public class ReportServiceImpl implements ReportService{
 //	    }
 	    String key = null;
 	    for(int i=0; i<4; i++) {
-	    	if(i==0) sortedMap.put(entryList.get(i).getKey(), Math.round(entryList.get(i).getValue()));
-	    	else{
+//	    	if(i==0) sortedMap.put(entryList.get(i).getKey(), Math.round(entryList.get(i).getValue()));
+	    
 	    		key = change(entryList.get(i).getKey());
 	    	sortedMap.put(key, Math.round(entryList.get(i).getValue()));
-	    	}
+	    	
 	    }
 	    System.out.println(sortedMap);
 	    return sortedMap;

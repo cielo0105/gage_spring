@@ -28,10 +28,28 @@ public class NewsController {
 	private final NewsService service;
 	
 	@GetMapping("/")
-	public ResponseEntity<Map<String, Object>> getNews() {
-		System.out.println(service.getNewsList());
+	public ResponseEntity<Map<String, Object>> registNews() {
+//		System.out.println(service.registNews());
+//		System.out.println(service.registInfo());
+		service.registSupport();
 		return handleSuccess("");
 	}
+	
+	@GetMapping("/list")
+	public ResponseEntity<Map<String, Object>> getNews() {
+		return handleSuccess(service.getNews());
+	}
+	
+	@GetMapping("/info")
+	public ResponseEntity<Map<String, Object>> getInfo() {
+		return handleSuccess(service.getInfo());
+	}
+	
+	@GetMapping("/support")
+	public ResponseEntity<Map<String, Object>> getSupport() {
+		return handleSuccess(service.getSupport());
+	}
+	
 	
 	private ResponseEntity<Map<String, Object>> handleSuccess(Object data) {
 		Map<String, Object> result = new HashMap<>();
