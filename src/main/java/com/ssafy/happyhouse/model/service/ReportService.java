@@ -6,6 +6,8 @@ import java.util.Map.Entry;
 
 public interface ReportService {
 
-	Map<String, Double> getLocalPeopleRank(String code);
+	Map<String, Long> getLocalPeopleRank(String code);
+
+	List<Map<String, Long>> getGageRank(String code, String dong);
 
 }
