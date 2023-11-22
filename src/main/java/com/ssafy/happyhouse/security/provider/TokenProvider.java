@@ -47,7 +47,7 @@ public class TokenProvider implements InitializingBean {
 		headerMap.put("typ", "JWT");
 
 		return new TokenDto(
-				Jwts.builder().signWith(key, SignatureAlgorithm.HS512).setHeader(headerMap).setSubject("security-test")
+				Jwts.builder().signWith(key, SignatureAlgorithm.HS512).setHeader(headerMap).setSubject("gage")
 						.claim("id", authentication.getName()).setExpiration(validity).compact(),
 				validity.toInstant().toEpochMilli());
 	}
