@@ -37,8 +37,8 @@ public class SecurityConfig {
 
 		security.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-		security.authorizeHttpRequests().requestMatchers(new AntPathRequestMatcher("/public/**")).permitAll()
-				.anyRequest().authenticated();
+		security.authorizeHttpRequests().requestMatchers(new AntPathRequestMatcher("/chat/**"), new AntPathRequestMatcher("/deal/regist/**")).authenticated()
+				.anyRequest().permitAll();
 
 		security.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
