@@ -7,5 +7,13 @@
 		select * from people_avg_view
 		where code = #{code}
 	</select>
+	
+	<select id="getGageRank" parameterType="String" resultType="map">
+		select indsSclsNm, count(*) count from gageinfo 
+		where adongCd = #{dong} and indsLclsCd = #{code} 
+		group by indsSclsNm 
+		order by count(*) desc
+		limit 5;
+	</select>
 
 </mapper>

@@ -47,6 +47,11 @@ public class GageController {
 		return handleSuccess(service.getResult(sub));
 	}
 	
+	@GetMapping("/category")
+	public ResponseEntity<Map<String, Object>> getCategory(String code) {
+		return handleSuccess(service.getCategory(code));
+	}
+	
 	@GetMapping("/list")
 	public ResponseEntity<Map<String, Object>> getGageList(String code) {
 		return handleSuccess(service.getGageList(code));
@@ -61,14 +66,10 @@ public class GageController {
 	}
 	
 	@GetMapping("/dong")
-	public ResponseEntity<Map<String, Object>> getLocation(String code) { // map 범위 안에 존재하는 동 코드 구하기
-		return handleSuccess(service.getLocation(code));
+	public ResponseEntity<Map<String, Object>> getLocation(String dong) { // map 범위 안에 존재하는 동 코드 구하기
+		return handleSuccess(service.getLocation(dong));
 	}
 
-//	@GetMapping("/count")
-//	public ResponseEntity<Map<String, Object>> getGageCountByCode(@RequestParam("code") String code,@RequestParam("dong") String dong) { // 각 동의 가게 개수 구하기
-//		return handleSuccess(service.getGageCountByCode(code, dong));
-//	}
 	
 	@GetMapping("/count")
 	public ResponseEntity<Map<String, Object>> getGageCountByCode(
@@ -82,11 +83,6 @@ public class GageController {
 	    return handleSuccess(service.getGageCountByCode(code, dong));
 	}
 
-//	@GetMapping("/cnt")
-//	public ResponseEntity<Map<String, Object>> getGageCount(String dong) { // 각 동의 가게 개수 구하기
-//		return handleSuccess(service.getGageCount(dong));
-//	}
-	
 	private ResponseEntity<Map<String, Object>> handleSuccess(Object data) {
 		Map<String, Object> result = new HashMap<>();
 		result.put("success", true);

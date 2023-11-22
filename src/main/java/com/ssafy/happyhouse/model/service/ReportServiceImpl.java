@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class ReportServiceImpl implements ReportService{
 	private final ReportDao dao;
 	@Override
-	public  Map<String, Double> getLocalPeopleRank(String code) {
+	public  Map<String, Long> getLocalPeopleRank(String code) {
 		Map<String, Double> result = new HashMap<>();
 		result = dao.getLocalPeopleRank(code);
 		System.out.println(result);
@@ -33,16 +33,16 @@ public class ReportServiceImpl implements ReportService{
 		    }
 		});
 		
-	    Map<String, Double> sortedMap = new LinkedHashMap<>();
+	    Map<String, Long> sortedMap = new LinkedHashMap<>();
 //	    for (Map.Entry<String, Double> entry : entryList) {
 //	        sortedMap.put(entry.getKey(), entry.getValue());
 //	    }
 	    String key = null;
 	    for(int i=0; i<4; i++) {
-	    	if(i==0) sortedMap.put(entryList.get(i).getKey(), entryList.get(i).getValue());
+	    	if(i==0) sortedMap.put(entryList.get(i).getKey(), Math.round(entryList.get(i).getValue()));
 	    	else{
 	    		key = change(entryList.get(i).getKey());
-	    	sortedMap.put(key, entryList.get(i).getValue());
+	    	sortedMap.put(key, Math.round(entryList.get(i).getValue()));
 	    	}
 	    }
 	    System.out.println(sortedMap);
@@ -64,6 +64,11 @@ public class ReportServiceImpl implements ReportService{
 		else sb.append("여");
 		System.out.println(sb);
 		return sb.toString();
+	}
+
+	@Override
+	public List<Map<String, Long>> getGageRank(String code, String dong) {
+		return dao.getGageRank(code,dong);
 	}
 	
 }

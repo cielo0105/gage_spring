@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.happyhouse.model.service.GageService;
@@ -30,6 +31,13 @@ public class ReportController {
 		 return handleSuccess(service.getLocalPeopleRank(code));
 	}
 	
+	@GetMapping("/gagerank")
+	public ResponseEntity<Map<String, Object>> getGageRank(@RequestParam("code") String code,
+            @RequestParam("dong") String dong){
+		System.out.println(code+" "+dong);
+		System.out.println(service.getGageRank(code, dong));
+		 return handleSuccess(service.getGageRank(code, dong));
+	}
 	
 	private ResponseEntity<Map<String, Object>> handleSuccess(Object data) {
 		Map<String, Object> result = new HashMap<>();

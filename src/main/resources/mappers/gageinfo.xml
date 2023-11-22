@@ -37,12 +37,28 @@
 
 	</select>
 	
+	
+	<select id="getCategory" parameterType="String" resultType="map">
+		select indsLclsNm, indsMclsNm, indsSclsNm, indsLclsCd, indsMclsCd, indsSclsCd
+		from subupjong 
+		where indsSclsCd = #{code}
+
+	</select>
+	
 	<!-- 지도 범위에 있는 동 정보 가져오기 -->
 	<select id="getDongList" parameterType="String" resultType="map">
 		select left(code,length(code)-2) as code, dong, lat, lng
 		from hcode 
 		where lat between #{bx} and #{tx}
 		and lng between #{by} and #{ty}
+	</select>
+	
+	
+	<!-- 지도 범위에 있는 동 정보 가져오기 -->
+	<select id="getLocation" parameterType="String" resultType="map">
+		select code, dong, lat,lng from hcode
+		where dong like concat('%', #{dong}, '%' )
+		limit 1
 	</select>
 	
 	<select id="getGageCountByCode" parameterType="String" resultType="int">

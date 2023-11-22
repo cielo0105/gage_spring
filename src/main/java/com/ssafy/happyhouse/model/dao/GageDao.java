@@ -1,5 +1,6 @@
 package com.ssafy.happyhouse.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -20,10 +21,12 @@ public interface GageDao {
 
 	List<String> getDongList(String bx, String by, String tx, String ty);
 
-	String[] getLocation(String code);
+	List<String> getLocation(String dong);
 
 	int getGageCount(String dong);
 
-	int getGageCountByCode(String code, String dong); 
+	int getGageCountByCode(String code, String dong);
+
+	HashMap<String, String> getCategory(String code); 
 
 }
