@@ -1,7 +1,5 @@
 package com.ssafy.happyhouse.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.happyhouse.model.dto.MemberDto;
 import com.ssafy.happyhouse.model.service.MemberService;
+import com.ssafy.happyhouse.security.dto.TokenDto;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -56,7 +56,7 @@ public class MemberController {
 	public ResponseEntity<Map<String, Object>> login(@RequestBody Map<String, String> userData, HttpSession session) {
 		String userId = userData.get("userId");
 		String userPass = userData.get("userPass");
-		MemberDto result = service.login(userId, userPass);
+		TokenDto result = service.login(userId, userPass);
 		System.out.println(userData);
 		if (result != null) {
 			session.setAttribute("user", result);

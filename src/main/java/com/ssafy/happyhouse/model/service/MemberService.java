@@ -1,11 +1,12 @@
 package com.ssafy.happyhouse.model.service;
 
 import com.ssafy.happyhouse.model.dto.MemberDto;
+import com.ssafy.happyhouse.security.dto.TokenDto;
 
 public interface MemberService {
 	void registerMember(MemberDto memberDto);
 
-	MemberDto login(String userId, String userPass);
+	TokenDto login(String userId, String userPass);
 
 	MemberDto getInfo(String userId);
 	
