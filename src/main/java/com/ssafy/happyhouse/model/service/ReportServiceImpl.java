@@ -10,6 +10,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.ssafy.happyhouse.model.dao.ReportDao;
+import com.ssafy.happyhouse.model.dto.IndicatorDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -46,7 +47,6 @@ public class ReportServiceImpl implements ReportService{
 	    	sortedMap.put(key, Math.round(entryList.get(i).getValue()));
 	    	
 	    }
-	    System.out.println(sortedMap);
 	    return sortedMap;
 		
 	}
@@ -63,13 +63,17 @@ public class ReportServiceImpl implements ReportService{
 		}
 		if(words[0] == 'm') sb.append("남");
 		else sb.append("여");
-		System.out.println(sb);
 		return sb.toString();
 	}
 
 	@Override
 	public List<Map<String, Long>> getGageRank(String code, String dong) {
 		return dao.getGageRank(code,dong);
+	}
+
+	@Override
+	public IndicatorDto getIndicator(String code) {
+		return dao.getIndicator(code);
 	}
 	
 }
