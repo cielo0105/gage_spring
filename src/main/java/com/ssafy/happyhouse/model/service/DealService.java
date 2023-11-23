@@ -8,4 +8,6 @@ public interface DealService {
 	int regist(DealDto dealDto);
 
 	List<DealDto> getList(double ha, double qa, double oa, double pa);
+
+	DealDto getDeal(int id);
 }

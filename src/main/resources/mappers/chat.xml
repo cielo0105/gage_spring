@@ -3,18 +3,87 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ssafy.happyhouse.model.dao.ChatDao">
-	<select id="getList" resultMap="basicChat" parameterType="string">
-		select c.id, c.user1, c.user2, cl.content AS last_msg, cl.create_date AS last_send
-		FROM chat c JOIN chatlog cl ON c.id = cl.chat_id
-		LEFT JOIN chatlog cl2 ON c.id = cl2.chat_id AND cl.create_date &lt; cl2.create_date
-		WHERE (c.user1 = #{id} OR c.user2 = #{id}) AND cl2.create_date IS NULL
+	<insert id="insertChatLog" parameterType="ChatLogDto">
+		insert into chatlog (chat_id, user, content) values (#{chatId},
+		#{user},
+		#{content})
+		<selectKey resultType="int" keyProperty="id" order="AFTER">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	<insert id="createRoom" parameterType="ChatDto">
+		INSERT INTO chat (deal, user1, user2)
+		SELECT deal.id, member.user_id, #{user2}
+		FROM deal
+		JOIN member ON deal.user = member.user_id
+		WHERE deal.id = #{deal};
+		<selectKey resultType="int" keyProperty="iq" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+
+	<select id="getList" resultMap="basicChat"
+		parameterType="string">
+		SELECT c.id, c.user1, u1.user_name AS name1, c.user2,
+		c.deal,
+		u2.user_name AS name2,
+		cl.content AS last_msg, cl.create_date AS
+		last_send
+		FROM chat c
+		JOIN chatlog cl ON c.id = cl.chat_id
+		JOIN member u1
+		ON c.user1 = u1.user_id
+		JOIN member u2 ON c.user2 = u2.user_id
+		LEFT JOIN
+		chatlog cl2 ON c.id = cl2.chat_id AND cl.create_date &lt;
+		cl2.create_date
+		WHERE (c.user1 = #{id} OR c.user2 = #{id}) AND
+		cl2.create_date IS NULL;
+	</select>
+
+	<select id="msgList" parameterType="string"
+		resultMap="basicChatLog">
+		select c.*, u.user_name as name from chatlog c join member u
+		on c.user=u.user_id where chat_id=#{id} order by create_date;
+	</select>
+
+	<select id="selectChatLog" parameterType="int"
+		resultMap="basicChatLog">
+		select c.*, u.user_name as name from chatlog c join member u
+		on
+		c.user=u.user_id where c.id=#{logId};
+	</select>
+
+	<select id="getDealId" resultType="int" parameterType="int">
+		select deal from chat where id=#{id}
+	</select>
+
+	<select id="findChatByUserDeal" parameterType="map"
+		resultMap="basicChat">
+		select * from chat where deal=#{id} and (user1=#{userId} or
+		user2=#{userId})
 	</select>
 
 	<resultMap type="ChatDto" id="basicChat">
 		<result column="id" property="id" />
 		<result column="user1" property="user1" />
 		<result column="user2" property="user2" />
+		<result column="name1" property="name1" />
+		<result column="name2" property="name2" />
 		<result column="last_msg" property="lastMsg" />
 		<result column="last_send" property="lastSend" />
+		<result column="deal" property="deal" />
+	</resultMap>
+
+	<resultMap type="ChatLogDto" id="basicChatLog">
+		<result column="id" property="id" />
+		<result column="chat_id" property="chatId" />
+		<result column="user" property="user" />
+		<result column="name" property="name" />
+		<result column="content" property="content" />
+		<result column="create_date" property="createDate" />
 	</resultMap>
 </mapper>

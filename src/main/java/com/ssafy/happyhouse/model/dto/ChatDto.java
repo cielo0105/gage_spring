@@ -15,6 +15,10 @@ public class ChatDto {
 	private int id;
 	private String user1;
 	private String user2;
+	private String name1;
+	private String name2;
 	private String lastMsg;
 	private Date lastSend;
+	private int deal;
+	private int iq;
 }

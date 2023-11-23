@@ -61,6 +61,7 @@ public class DealController {
     	}
     	dealDto.setLat(data.get("lat"));
     	dealDto.setLon(data.get("lon"));
+    	dealDto.setUser(data.get("user"));
     	System.out.println(dealDto);
     	return handleSuccess(service.regist(dealDto));
     }
@@ -81,6 +82,12 @@ public class DealController {
         String savePath= uploadFile.getPath();
         System.out.println(savePath);
     	return handleSuccess(savePath);
+    }
+    
+    @GetMapping("/deal")
+    public ResponseEntity<Map<String, Object>> getDeal(@RequestParam int id){
+    	System.out.println("ididididididid="+id);
+    	return handleSuccess(service.getDeal(id));
     }
     
     

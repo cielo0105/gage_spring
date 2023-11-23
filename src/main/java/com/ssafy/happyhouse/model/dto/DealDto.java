@@ -28,4 +28,5 @@ public class DealDto {
 	private String lat;
 	private String lon;
 	private String state;
+	private String user;
 }

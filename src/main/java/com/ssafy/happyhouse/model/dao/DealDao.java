@@ -11,4 +11,6 @@ public interface DealDao {
 	int registDeal(DealDto dealDto);
 
 	List<DealDto> getList(double ha, double qa, double oa, double pa);
+
+	DealDto getDeal(int id);
 }

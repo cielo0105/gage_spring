@@ -4,14 +4,18 @@
 
 <mapper namespace="com.ssafy.happyhouse.model.dao.DealDao">
 	<insert id="registDeal" parameterType="DealDto">
-		insert into deal (type, address, address_detail, area, recommend, floor, floor_all, description, img, amount1, amount2, lat, lon)
+		insert into deal (type, address, address_detail, area, recommend, floor, floor_all, description, img, amount1, amount2, lat, lon, user)
 		VALUES (
-		#{type}, #{address}, #{addressDetail}, #{area}, #{recommend}, #{floor}, #{floorAll}, #{desc}, #{img}, #{amount1}, #{amount2}, #{lat}, #{lon}
+		#{type}, #{address}, #{addressDetail}, #{area}, #{recommend}, #{floor}, #{floorAll}, #{desc}, #{img}, #{amount1}, #{amount2}, #{lat}, #{lon}, #{user}
 		)
 	</insert>
 	
 	<select id="getList" resultMap="basicDeal">
 		select * from deal where state='ing' and lon between #{ha} and #{oa} and lat between #{qa} and #{pa}
+	</select>
+	
+	<select id="getDeal" parameterType="int" resultMap="basicDeal">
+		select * from deal where id=#{id}
 	</select>
 	
 	<resultMap type="dealDto" id="basicDeal">
@@ -31,5 +35,6 @@
 		<result column="lat" property="lat" />
 		<result column="lon" property="lon" />
 		<result column="state" property="state" />
+		<result column="user" property="user" />		
 	</resultMap>
 </mapper>
