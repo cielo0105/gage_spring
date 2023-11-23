@@ -16,4 +16,10 @@
 		limit 5;
 	</select>
 
+	<select id="getIndicator" parameterType="String" resultType="indicatorDto">
+		select * from indicator
+		where dongCd = #{code}
+		order by year desc
+		limit 1;
+	</select>
 </mapper>

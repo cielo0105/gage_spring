@@ -39,6 +39,11 @@ public class ReportController {
 		 return handleSuccess(service.getGageRank(code, dong));
 	}
 	
+	@GetMapping("/indicator")
+	public ResponseEntity<Map<String, Object>> getIndicator(@RequestParam("code") String code){ // 동코드
+		 return handleSuccess(service.getIndicator(code));
+	}
+	
 	private ResponseEntity<Map<String, Object>> handleSuccess(Object data) {
 		Map<String, Object> result = new HashMap<>();
 		result.put("success", true);
