@@ -29,7 +29,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     System.out.println("userdto" + user);
     
     if(! user.getUserPass().equals(password)) {
-    	throw new RuntimeException();
     }
 
 //    SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(
